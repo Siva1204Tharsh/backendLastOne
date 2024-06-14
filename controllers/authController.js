@@ -119,7 +119,7 @@ const resetpasswordrequest = async (req, res) => {
 
     console.log("Message sent: %s", info.messageId);
 
-    res.json({ message: "Reset password email sent", token: token });
+    res.json({ message: "Reset password email Sent", token: token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
