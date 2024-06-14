@@ -108,11 +108,11 @@ const port = process.env.PORT || 5000;
 
 //start the server
 const server = app.listen(port, () =>
-  console.log(`Server running on port ${port} 🔥`)
+  console.log(`Server running on port ${port} `)
 );
 
 const io = require("socket.io")(server, {
-  pingTimeout: 60000,
+  pingTimeout: 50000,
   cors: {
     orgin: "http://localhost:3000",
   },

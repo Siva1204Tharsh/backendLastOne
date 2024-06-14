@@ -96,28 +96,22 @@ const resetpasswordrequest = async (req, res) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      // host: "smtp.zoho.com",
-      // port: 587,
-      // secure: false,
-      // service: "gmail",
       host: "smtp.office365.com",
       port: 587,
       secure: false,
+
       auth: {
-        user: "cst20006@std.uwu.ac.lk",
-        pass: "12apr2000",
+        user: "siva02tharshan@gmail.com",
+        pass: "uyst aehr qdoh kamx",
       },
       tls: {
         ciphers: "SSLv3",
-        rejectUnauthorized: false,
       },
-      debug: true,
-      logger: true,
     });
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: "cst20006@std.uwu.ac.lk",
+      from: "siva02tharshan@gmail.com",
       to: email,
       subject: "Reset Password",
       text: `Please click on the following link to reset your password: ${resetLink}`,
