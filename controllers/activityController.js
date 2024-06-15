@@ -36,7 +36,7 @@ const createActivity = async (req, res) => {
 
       res.status(200).json({ updated: true, activity: updatedActivity });
     } else {
-      // Creating a new activity
+      // Creating a new activity  kkkkkkk
       const newActivity = new SpecialActivity({
         user: user,
         name,
