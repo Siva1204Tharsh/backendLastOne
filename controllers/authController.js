@@ -96,13 +96,13 @@ const resetpasswordrequest = async (req, res) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
+      host: "smtp.gmail.com",
       port: 587,
       secure: false,
 
       auth: {
         user: "siva02tharshan@gmail.com",
-        pass: "uyst aehr qdoh kamx",
+        pass: "jkbb vwix gomz pyds",
       },
       tls: {
         ciphers: "SSLv3",
