@@ -9,8 +9,12 @@ const userRoutes = require("./routes/userRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 
+const User = require("./models/userModel");
+const bcrypt = require("bcrypt");
+
 const cors = require("cors");
 //db connection
+process.env.MONGO_URI = 'mongodb://localhost:27017/intournetExplorer';
 const connectDB = require("./config/db");
 connectDB();
 app.use(express.json({ limit: "50mb", extended: true }));
@@ -18,11 +22,38 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 app.use(cors());
 
+// Function to create an initial admin user
+async function createInitialAdmin() {
+  try {
+    const adminExists = await User.findOne({ type: 'admin' });
+    if (!adminExists) {
+      const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
+      const admin = new User({
+        
+        name: process.env.ADMIN_USERNAME,
+        email: 'jana61jr@gmail.com',
+        mobile: process.env.ADMIN_MOBILE,
+        country: process.env.ADMIN_COUNTRY,
+        type: 'admin',
+        isAdmin: true,
+        password: hashedPassword,
+      });
+      await admin.save();
+      console.log('Initial admin user created');
+    }
+  } catch (error) {
+    console.error('Error creating initial admin user:', error);
+  }
+}
+// Call the function to create initial admin user
+createInitialAdmin();
+
 //to accept body data
 
 //to use json
 
 //middlewares
+
 
 app.use(bodyParser.json({ limit: "50mb" }));
 
