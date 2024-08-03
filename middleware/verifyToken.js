@@ -54,7 +54,7 @@ const protect = asyncHandler(async (req, res, next) => {
 
       console.log(token);
 
-      const decoded = jwt.verify(token,"travelyVerification");
+      const decoded = jwt.verify(token,"InTourNeTVerification");
 
       console.log(decoded)
 

@@ -1,4 +1,6 @@
 const express = require("express");
+
+
 const {
   updateUser,
   deleteUser,
@@ -51,5 +53,6 @@ router.route("/").post(registerUser);
 router.route("/").get(protect, allUsers);
 
 router.route("/login").post(authUser);
+
 
 module.exports = router;
