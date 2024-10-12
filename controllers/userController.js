@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 
+
 // @desc    Update a User
 // @route   PUT /api/users/:id
 // @access
@@ -54,9 +55,18 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const getUserProfile = async (req, res) => {
+  try {
+    res.status(200).json(req.user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   updateUser,
   deleteUser,
   getUser,
   getAllUsers,
+  getUserProfile,
 };
