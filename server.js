@@ -87,6 +87,7 @@ const restaurantReservationTimeRoute = require("./routes/restaurantReservationTi
 const restaurantRateRoute = require("./routes/restaurantRateRoute");
 const restaurantReservationRoute = require("./routes/restaurantReservationRoute");
 
+// Janar
 app.use("/api/restaurant", restaurantRoute);
 app.use("/api/restaurantType", restaurantTypeRoute);
 app.use("/api/restaurantDistrict", restaurantDistrictRoute);
