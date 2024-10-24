@@ -6,6 +6,7 @@ const {
   deleteUser,
   getUser,
   getAllUsers,
+  getUserProfile,
 } = require("../controllers/userController");
 const {
   verifyToken,
@@ -46,6 +47,16 @@ router.delete("/:id", verifyUser, deleteUser);
 router.get("/:id", verifyUser, getUser);
 //get all
 router.get("/", verifyAdmin, getAllUsers);
+
+
+// Route to get the current logged-in user
+router.get("/currentuser", verifyToken, (req, res) => {
+  if (!req.user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+  res.status(200).json(req.user); // Send authenticated user's info
+});
+
 
 router.route("/").post(registerUser);
 
