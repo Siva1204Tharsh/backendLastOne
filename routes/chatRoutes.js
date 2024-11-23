@@ -36,4 +36,19 @@ router.get('/:senderId/:senderModel/:receiverId/:receiverModel', async (req, res
     }
 });
 
+router.get('/users', async (req, res) => {
+    try {
+        // Get distinct senders and receivers
+        const senders = await Chat.distinct('sender');
+        const receivers = await Chat.distinct('receiver');
+
+        // Merge both arrays and remove duplicates using Set
+        const uniqueUsers = [...new Set([...senders, ...receivers])];
+
+        res.status(200).json(uniqueUsers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 module.exports = router;
