@@ -37,7 +37,7 @@ async function createInitialAdmin() {
       const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
       const admin = new User({
         name: process.env.ADMIN_USERNAME,
-        email: 'jana61jr@gmail.com',
+        email: 'admin@gmail.com',
         mobile: process.env.ADMIN_MOBILE,
         country: process.env.ADMIN_COUNTRY,
         type: 'admin',
